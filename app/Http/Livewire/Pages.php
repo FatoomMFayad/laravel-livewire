@@ -49,6 +49,11 @@ class Pages extends Component
         $this->resetVars();
     }
 
+    public function update()
+    {
+        dd('Updating...');
+    }
+
     /**
      * read all pages
      * @return Collection
@@ -65,6 +70,8 @@ class Pages extends Component
     **/
     public function createShowModal()
     {
+        $this->resetValidation();
+        $this->resetVars();
         $this->modalFormVisible = true;
     }
 
@@ -74,6 +81,7 @@ class Pages extends Component
      */
     public function updateShowModal($id)
     {
+        $this->resetValidation();
         $this->modelId = $id;
         $this->modalFormVisible = true;
         $this->loadModel();
@@ -97,6 +105,7 @@ class Pages extends Component
      */
     public function resetVars()
     {
+        $this->modelId = null;
         $this->title = null;
         $this->slug = null;
         $this->content = null;
