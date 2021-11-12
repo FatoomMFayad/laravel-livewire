@@ -10,6 +10,7 @@ use phpDocumentor\Reflection\Types\Collection;
 class Pages extends Component
 {
     public $modalFormVisible = false;
+    public $modelId;
     public $slug;
     public $title;
     public $content;
@@ -65,6 +66,30 @@ class Pages extends Component
     public function createShowModal()
     {
         $this->modalFormVisible = true;
+    }
+
+    /**
+     * Update function
+     * @param $id
+     */
+    public function updateShowModal($id)
+    {
+        $this->modelId = $id;
+        $this->modalFormVisible = true;
+        $this->loadModel();
+    }
+
+    /**
+     * Load data of the model
+     * for this component
+     *
+     */
+    public function loadModel()
+    {
+        $data = Page::find($this->modelId);
+        $this->title = $data->title;
+        $this->slug = $data->slug;
+        $this->content = $data->content;
     }
     /**
      * reset all the properties

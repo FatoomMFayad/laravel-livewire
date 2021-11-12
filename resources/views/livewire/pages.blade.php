@@ -21,11 +21,11 @@
                     <td class="px-6 py-4 text-sm whitespace-no-wrap">{{$item->slug}}</td>
                     <td class="px-6 py-4 text-sm whitespace-no-wrap">{!! \Illuminate\Support\Str::limit($item->content, 50, '...') !!}</td>
                     <td class="px-6 py-4 text-right text-sm">
-                        <x-jet-button wire:click="updateShowModal({{$item->id}})">
-                            {{__('Update')}}
+                        <x-jet-button wire:click="updateShowModal({{ $item->id }})">
+                            {{ __('Update') }}
                         </x-jet-button>
-                        <x-jet-danger-button wire:click="deleteShowModal({{$item->id}})">
-                            {{__('Delete')}}
+                        <x-jet-danger-button wire:click="deleteShowModal({{ $item->id }})">
+                            {{ __('Delete') }}
                         </x-jet-danger-button>
                     </td>
                 </tr>
@@ -39,7 +39,7 @@
     </table>
     <x-jet-dialog-modal wire:model="modalFormVisible">
         <x-slot name="title">
-            {{__('Save Page')}}
+            {{__('Save Page')}}{{ $modelId }}
         </x-slot>
         <x-slot name="content">
             <div class="mt-4">
