@@ -32,6 +32,7 @@ class Pages extends Component
      */
     public function create()
     {
+        $this->validate();
         Page::create($this->modelData());
         $this->modalFormVisible = false;
         $this->resetVars();
