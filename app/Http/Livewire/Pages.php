@@ -26,6 +26,15 @@ class Pages extends Component
         ];
 
     }
+
+    /**
+     * Runs everytime title input updated
+     * @return void
+     */
+    public function updatedTitle($value)
+    {
+        $this->generateSlug($value);
+    }
     /**
      *The create function
      * @return void
@@ -69,6 +78,17 @@ class Pages extends Component
             'slug'=> $this->slug,
             'content' => $this->content
         ];
+    }
+    /**
+     * Generate page slug
+     * @return string
+     */
+    private function generateSlug($value)
+    {
+        $step1 = str_replace(' ', '-', $value);
+        $step2 = strtolower($step1);
+        $this->slug = $step2;
+
     }
 
     /**
