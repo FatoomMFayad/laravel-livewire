@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Page;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
+use phpDocumentor\Reflection\Types\Collection;
 
 class Pages extends Component
 {
@@ -45,6 +46,15 @@ class Pages extends Component
         Page::create($this->modelData());
         $this->modalFormVisible = false;
         $this->resetVars();
+    }
+
+    /**
+     * read all pages
+     * @return Collection
+     */
+    public function read()
+    {
+        return Page::paginate(5);
 
     }
     /**
@@ -98,6 +108,8 @@ class Pages extends Component
      **/
     public function render()
     {
-        return view('livewire.pages');
+        return view('livewire.pages',[
+            'data' => $this->read(),
+        ]);
     }
 }
