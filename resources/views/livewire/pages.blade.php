@@ -77,9 +77,15 @@
             <x-jet-secondary-button wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
                 {{__('Nevermind')}}
             </x-jet-secondary-button>
-            <x-jet-button class="ml-2" wire:click="create" wire:loading.attr="disabled">
-                {{__('Save')}}
-            </x-jet-button>
+            @if($modelId)
+                <x-jet-button class="ml-2" wire:click="update" wire:loading.attr="disabled">
+                    {{__('Update')}}
+                </x-jet-button>
+            @else
+                <x-jet-button class="ml-2" wire:click="create" wire:loading.attr="disabled">
+                    {{__('Create')}}
+                </x-jet-button>
+            @endif
 
         </x-slot>
     </x-jet-dialog-modal>
