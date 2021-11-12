@@ -12,6 +12,13 @@ class Pages extends Component
     public $title;
     public $content;
 
+    public function create()
+    {
+        Page::create($this->modelData());
+        $this->modalFormVisible = false;
+        $this->resetVars();
+
+    }
     /**
      * createShowModal
      * of the create function.
@@ -21,6 +28,30 @@ class Pages extends Component
     {
         $this->modalFormVisible = true;
     }
+    /**
+     * reset all the properties
+     * @return void
+     */
+    public function resetVars()
+    {
+        $this->title = null;
+        $this->slug = null;
+        $this->content = null;
+    }
+    /**
+     * The Data for the model mapped
+     * in this component
+     * @return array
+     */
+    public function modelData()
+    {
+        return [
+            'title' => $this->title,
+            'slug'=> $this->slug,
+            'content' => $this->content
+        ];
+    }
+
     /**
      * The livewire render function
      *
