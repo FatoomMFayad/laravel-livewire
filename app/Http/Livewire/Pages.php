@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Page;
 use Livewire\Component;
+use Illuminate\Validation\Rule;
 
 class Pages extends Component
 {
@@ -12,6 +13,23 @@ class Pages extends Component
     public $title;
     public $content;
 
+    /**
+     *validation rules
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'title'=> 'required',
+            'slug' => ['required', Rule::unique('pages', 'slug')],
+            'content' => 'required'
+        ];
+
+    }
+    /**
+     *The create function
+     * @return void
+     */
     public function create()
     {
         Page::create($this->modelData());
