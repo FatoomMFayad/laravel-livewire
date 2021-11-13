@@ -6,9 +6,11 @@ use App\Models\Page;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 use phpDocumentor\Reflection\Types\Collection;
+use Livewire\WithPagination;
 
 class Pages extends Component
 {
+    use WithPagination;
     public $modalFormVisible = false;
     public $modelId;
     public $slug;
@@ -102,6 +104,16 @@ class Pages extends Component
         $this->title = $data->title;
         $this->slug = $data->slug;
         $this->content = $data->content;
+    }
+
+    /**
+     * reset pagination
+     * @return void
+     */
+
+    public function mount()
+    {
+        $this->resetPage();
     }
     /**
      * reset all the properties

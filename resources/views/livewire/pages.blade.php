@@ -37,6 +37,8 @@
         @endif
         </tbody>
     </table>
+    <br/>
+    {{ $data->links() }}
     <x-jet-dialog-modal wire:model="modalFormVisible">
         <x-slot name="title">
             {{__('Save Page')}}{{ $modelId }}
