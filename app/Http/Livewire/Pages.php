@@ -12,6 +12,7 @@ class Pages extends Component
 {
     use WithPagination;
     public $modalFormVisible = false;
+    public $modalConfirmDeleteVisible = false;
     public $modelId;
     public $slug;
     public $title;
@@ -91,6 +92,21 @@ class Pages extends Component
         $this->modelId = $id;
         $this->modalFormVisible = true;
         $this->loadModel();
+    }
+
+    /**
+     * Shows the delete confirmation modal
+     *@param $id
+     * @return void
+     */
+    public function deleteShowModal($id)
+    {
+        $this->resetValidation();
+        $this->resetVars();
+        $this->modelId = $id;
+        $this->modalConfirmDeleteVisible = true;
+        $this->loadModel();
+
     }
 
     /**
