@@ -52,6 +52,10 @@ class Pages extends Component
         $this->resetVars();
     }
 
+    /**
+     * Update function
+     * @return void
+     */
     public function update()
     {
         $this->validate();
@@ -60,6 +64,17 @@ class Pages extends Component
 
     }
 
+    /**
+     * delete function
+     * @return void
+     */
+
+    public function delete()
+    {
+        Page::destroy($this->modelId);
+        $this->modalConfirmDeleteVisible = false;
+        $this->resetPage();
+    }
     /**
      * read all pages
      * @return Collection
