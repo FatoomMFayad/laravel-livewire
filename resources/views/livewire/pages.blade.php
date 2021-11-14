@@ -48,7 +48,7 @@
     {{ $data->links() }}
     <x-jet-dialog-modal wire:model="modalFormVisible">
         <x-slot name="title">
-            {{__('Save Page')}}{{ $modelId }}
+            {{__('Save Page')}}
         </x-slot>
         <x-slot name="content">
             <div class="mt-4">
