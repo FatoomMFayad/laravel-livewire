@@ -12,9 +12,17 @@ class Frontpage extends Component
 
     public function mount($urlslug)
     {
-        $this->urlslug = $urlslug;
+        $this->retrieveContent($urlslug);
     }
-    public function render()
+
+    public function retrieveContent($urlslug)
+    {
+        $data = Page::where('slug', $urlslug)->first();
+        $this->title = $data->title;
+        $this->content = $data->content;
+    }
+
+   public function render()
     {
         return view('livewire.frontpage')->layout('layouts.frontpage');
     }

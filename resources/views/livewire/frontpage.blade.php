@@ -1,3 +1,4 @@
 <div>
-    This is Full Page Livewire Component
+    <h1>{{ $title }}</h1>
+    {!! $content !!}
 </div>
